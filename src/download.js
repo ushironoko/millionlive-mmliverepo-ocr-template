@@ -3,12 +3,12 @@ const fs = require('fs')
 const repo = require('../response.json')
 const imagepath = './images/'
 
-async function imageRequest(url,writeFileStream,filename) {
+async function imageRequest(url, writeFileStream, filename) {
   await request(url)
-  .pipe(writeFileStream)
-  .on('close', function() {
-    console.log(url, 'saved to', filename)
-  })
+    .pipe(writeFileStream)
+    .on('close', function() {
+      console.log(url, 'saved to', filename)
+    })
 }
 
 const parse = repo.map(x => {
@@ -24,5 +24,5 @@ urls.map(x => {
   let filename = x.substr(s + 1)
 
   const writeFileStream = fs.createWriteStream(imagepath + filename)
-  imageRequest(x,writeFileStream,filename)
+  imageRequest(x, writeFileStream, filename)
 })
