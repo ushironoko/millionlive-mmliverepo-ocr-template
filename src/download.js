@@ -1,8 +1,8 @@
+require('dotenv').config()
 const request = require('request')
 const fs = require('fs')
-const ocr = require('./ocr')
 
-module.exports = function download() {
+function download() {
   try {
     let repo = JSON.parse(fs.readFileSync('./response.json', 'utf8'))
     const parse = repo.map(x => {
@@ -29,3 +29,5 @@ module.exports = function download() {
     console.log(error)
   }
 }
+
+download()

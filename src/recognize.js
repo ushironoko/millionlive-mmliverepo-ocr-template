@@ -18,18 +18,18 @@ async function readdir() {
 async function recognize() {
   const filepaths = await readdir()
 
-  filepaths.map(filepath => {
-    Tesseract.recognize(filepath)
-      .progress(function(p) {
-        console.log('progress', p)
-      })
-      .catch(err => console.error(err))
-      .then(function(result) {
-        log_file.write(result.text)
-      })
-  })
-
-  process.exit(0)
+  return Promise.all(
+    filepaths.map(async filepath => {
+      await Tesseract.recognize(filepath)
+        .progress(function(p) {
+          console.log('progress', p)
+        })
+        .catch(err => console.error(err))
+        .then(function(result) {
+          log_file.write(result.text)
+        })
+    })
+  )
 }
 
-recognize()
+recognize().then(() => process.exit(0))

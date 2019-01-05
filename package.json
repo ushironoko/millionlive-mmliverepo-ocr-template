@@ -6,9 +6,10 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "ocr": "node src/ocr.js",
     "main": "node src/main.js",
-    "start": "npm run main && npm run ocr",
+    "dl": "node src/download.js",
+    "ocr": "node src/recognize.js",
+    "start": "npm run main && npm run dl && npm run ocr",
     "test": "echo \"Error: no test specified\" && exit 1",
     "fmt": "prettier *.json src/*.js --write"
   },
