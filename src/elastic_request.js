@@ -8,10 +8,10 @@ module.exports = async function getPlayResultJSON() {
   let res = ''
   try {
     res = await client.search({
-      index: 'twitter',
+      index: process.env.ELASTIC_SEARCH_INDEX,
       body: {
         sort: { '@timestamp': { order: 'desc' } },
-        size: 100,
+        size: 10,
         _source: [
           'entities.media.display_url',
           'entities.media.media_url_https',

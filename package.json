@@ -6,13 +6,11 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "dl": "node src/download.js",
     "ocr": "node src/ocr.js",
     "main": "node src/main.js",
-    "fmt": "prettier *.json src/*.js --write",
-    "get": "npm run main && npm run fmt",
-    "start": "npm run main",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run main && npm run ocr",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fmt": "prettier *.json src/*.js --write"
   },
   "license": "MIT",
   "dependencies": {
