@@ -1,10 +1,10 @@
 require('dotenv').config()
-const getPlayResultJSON = require('./elastic_request')
+const getPlayResultJSON = require('./elasticsearchapi')
 const jsonWrite = require('./jsonwrite')
 
-async function main() {
+async function fetchResource() {
   const res = await getPlayResultJSON()
   await jsonWrite(res)
 }
 
-main()
+fetchResource()

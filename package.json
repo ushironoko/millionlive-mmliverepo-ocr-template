@@ -8,7 +8,7 @@
   "scripts": {
     "main": "node src/main.js",
     "dl": "node src/download.js",
-    "ocr": "node src/ocr.js",
+    "ocr": "node src/recognize.js",
     "start": "npm run main && npm run dl && npm run ocr",
     "test": "echo \"Error: no test specified\" && exit 1",
     "fmt": "prettier *.json src/*.js --write"
