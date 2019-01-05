@@ -1,16 +1,35 @@
+require('dotenv').config()
 const fs = require('fs')
-const log_file = fs.createWriteStream(__dirname + '/log.log', { flags: 'w' })
-const log_stdout = process.stdout
+const path = require('path')
 const Tesseract = require('tesseract.js')
-const filename = './images/pic.png'
+const log_file = fs.createWriteStream('ocr_results.log', {
+  flags: 'a'
+})
 
-Tesseract.recognize(filename)
-  .progress(function(p) {
-    console.log('progress', p)
+async function readdir() {
+  return new Promise(resolve => {
+    fs.readdir(process.env.IMAGES_DIR_PATH, (error, list) => {
+      const filepaths = list.map(x => path.join(process.env.IMAGES_DIR_PATH, x))
+      resolve(filepaths)
+    })
   })
-  .catch(err => console.error(err))
-  .then(function(result) {
-    log_file.write(result.text)
-    log_stdout.write(result.text)
-    process.exit(0)
+}
+
+async function recognize() {
+  const filepaths = await readdir()
+
+  filepaths.map(filepath => {
+    Tesseract.recognize(filepath)
+      .progress(function(p) {
+        console.log('progress', p)
+      })
+      .catch(err => console.error(err))
+      .then(function(result) {
+        log_file.write(result.text)
+      })
   })
+  
+  process.exit(0)
+}
+
+recognize()

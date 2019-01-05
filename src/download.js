@@ -1,14 +1,7 @@
 const request = require('request')
 const fs = require('fs')
+const ocr = require('./ocr')
 const repo = require('../response.json')
-
-async function imageRequest(url, writeFileStream, filename) {
-  await request(url)
-    .pipe(writeFileStream)
-    .on('close', function() {
-      console.log(url, 'saved to', filename)
-    })
-}
 
 module.exports = function download() {
   try {
@@ -20,14 +13,17 @@ module.exports = function download() {
       return x.media[0].media_url_https
     })
 
-    urls.map(x => {
-      let s = x.lastIndexOf('/')
-      let filename = x.substr(s + 1)
+    urls.map(url => {
+      let s = url.lastIndexOf('/')
+      let filename = url.substr(s + 1)
+      let filepath = process.env.IMAGES_DIR_PATH + filename
+      let writeFileStream = fs.createWriteStream(filepath)
 
-      let writeFileStream = fs.createWriteStream(
-        process.env.IMAGES_PATH + filename
-      )
-      imageRequest(x, writeFileStream, filename)
+      request(url)
+        .pipe(writeFileStream)
+        .on('close', function() {
+          console.log(url, 'saved')
+        })
     })
   } catch (error) {
     console.log(error)

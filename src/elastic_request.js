@@ -1,17 +1,16 @@
 const elasticsearch = require('elasticsearch')
 const client = new elasticsearch.Client({
-  host: process.env.ELASTIC_SEARCH_URL,
-  log: 'trace'
+  host: process.env.ELASTIC_SEARCH_URL
 })
 
 module.exports = async function getPlayResultJSON() {
   let res = ''
   try {
     res = await client.search({
-      index: 'twitter',
+      index: process.env.ELASTIC_SEARCH_INDEX,
       body: {
         sort: { '@timestamp': { order: 'desc' } },
-        size: 100,
+        size: 5,
         _source: [
           'entities.media.display_url',
           'entities.media.media_url_https',
