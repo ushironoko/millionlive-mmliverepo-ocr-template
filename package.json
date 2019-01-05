@@ -11,7 +11,7 @@
     "main": "node src/main.js",
     "fmt": "prettier *.json src/*.js --write",
     "get": "npm run main && npm run fmt",
-    "start": "npm run main && npm run dl && npm run ocr",
+    "start": "npm run main",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "MIT",

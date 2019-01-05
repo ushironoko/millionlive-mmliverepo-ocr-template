@@ -1,7 +1,6 @@
 const request = require('request')
 const fs = require('fs')
 const repo = require('../response.json')
-const imagepath = './images/'
 
 async function imageRequest(url, writeFileStream, filename) {
   await request(url)
@@ -11,18 +10,26 @@ async function imageRequest(url, writeFileStream, filename) {
     })
 }
 
-const parse = repo.map(x => {
-  return x._source.entities
-})
+module.exports = function download() {
+  try {
+    const parse = repo.map(x => {
+      return x._source.entities
+    })
 
-const urls = parse.filter(x => x != null).map(x => {
-  return x.media[0].media_url_https
-})
+    const urls = parse.filter(x => x != null).map(x => {
+      return x.media[0].media_url_https
+    })
 
-urls.map(x => {
-  let s = x.lastIndexOf('/')
-  let filename = x.substr(s + 1)
+    urls.map(x => {
+      let s = x.lastIndexOf('/')
+      let filename = x.substr(s + 1)
 
-  const writeFileStream = fs.createWriteStream(imagepath + filename)
-  imageRequest(x, writeFileStream, filename)
-})
+      let writeFileStream = fs.createWriteStream(
+        process.env.IMAGES_PATH + filename
+      )
+      imageRequest(x, writeFileStream, filename)
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
