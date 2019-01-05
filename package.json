@@ -1,17 +1,20 @@
 {
   "name": "tesseract",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tesseract OCR from millionlive million mix live report image, Data source is from Elasticsearch & Logstash,",
+  "author": "ushironoko",
   "main": "main.js",
+  "private": true,
   "scripts": {
-    "download": "node src/download.js",
+    "dl": "node src/download.js",
     "ocr": "node src/ocr.js",
-    "elasticsearch": "node src/elastic_request.js",
-    "start": "npm run elasticsearch && npm run download && npm run ocr",
+    "main": "node src/main.js",
+    "fmt": "prettier *.json src/*.js --write",
+    "get": "npm run main && npm run fmt",
+    "start": "npm run main && npm run dl && npm run ocr",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^6.2.0",
     "elasticsearch": "^15.2.0",

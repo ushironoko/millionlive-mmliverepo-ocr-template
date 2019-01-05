@@ -11,7 +11,7 @@ module.exports = async function getPlayResultJSON() {
       index: 'twitter',
       body: {
         sort: { '@timestamp': { order: 'desc' } },
-        size: 20,
+        size: 100,
         _source: [
           'entities.media.display_url',
           'entities.media.media_url_https',
@@ -21,7 +21,6 @@ module.exports = async function getPlayResultJSON() {
         query: { match_all: {} }
       }
     })
-    console.log(res.hits.hits)
   } catch (error) {
     console.trace(error.message)
   }
