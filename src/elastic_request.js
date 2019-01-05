@@ -11,7 +11,7 @@ module.exports = async function getPlayResultJSON() {
       index: process.env.ELASTIC_SEARCH_INDEX,
       body: {
         sort: { '@timestamp': { order: 'desc' } },
-        size: 10,
+        size: 3,
         _source: [
           'entities.media.display_url',
           'entities.media.media_url_https',
@@ -21,6 +21,7 @@ module.exports = async function getPlayResultJSON() {
         query: { match_all: {} }
       }
     })
+    console.log(res.hits.hits)
   } catch (error) {
     console.trace(error.message)
   }
