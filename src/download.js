@@ -1,12 +1,28 @@
 const request = require('request')
 const fs = require('fs')
-const url = 'https://pbs.twimg.com/media/DwF7SBvUcAUK6kq.jpg'
-const filename = './images/pic.png'
+const repo = require('../response.json')
+const imagepath = './images/'
 
-const writeFileStream = fs.createWriteStream(filename)
-
-request(url)
+async function imageRequest(url,writeFileStream,filename) {
+  await request(url)
   .pipe(writeFileStream)
   .on('close', function() {
     console.log(url, 'saved to', filename)
   })
+}
+
+const parse = repo.map(x => {
+  return x._source.entities
+})
+
+const urls = parse.filter(x => x != null).map(x => {
+  return x.media[0].media_url_https
+})
+
+urls.map(x => {
+  let s = x.lastIndexOf('/')
+  let filename = x.substr(s + 1)
+
+  const writeFileStream = fs.createWriteStream(imagepath + filename)
+  imageRequest(x,writeFileStream,filename)
+})
