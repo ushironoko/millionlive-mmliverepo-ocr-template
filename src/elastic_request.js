@@ -1,6 +1,7 @@
 const elasticsearch = require('elasticsearch')
 const client = new elasticsearch.Client({
-  host: process.env.ELASTIC_SEARCH_URL
+  host: process.env.ELASTIC_SEARCH_URL,
+  log: 'trace'
 })
 
 module.exports = async function getPlayResultJSON() {
@@ -10,7 +11,7 @@ module.exports = async function getPlayResultJSON() {
       index: process.env.ELASTIC_SEARCH_INDEX,
       body: {
         sort: { '@timestamp': { order: 'desc' } },
-        size: 5,
+        size: 10,
         _source: [
           'entities.media.display_url',
           'entities.media.media_url_https',

@@ -28,7 +28,7 @@ async function recognize() {
         log_file.write(result.text)
       })
   })
-  
+
   process.exit(0)
 }
 

@@ -1,10 +1,10 @@
 const request = require('request')
 const fs = require('fs')
 const ocr = require('./ocr')
-const repo = require('../response.json')
 
 module.exports = function download() {
   try {
+    let repo = JSON.parse(fs.readFileSync('./response.json', 'utf8'))
     const parse = repo.map(x => {
       return x._source.entities
     })
