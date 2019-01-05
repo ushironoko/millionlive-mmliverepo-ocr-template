@@ -1,0 +1,22 @@
+{
+  "name": "tesseract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "download": "node src/download.js",
+    "ocr": "node src/ocr.js",
+    "elasticsearch": "node src/elastic_request.js",
+    "start": "npm run elasticsearch && npm run download && npm run ocr",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "elasticsearch": "^15.2.0",
+    "fs-extra": "^7.0.1",
+    "request": "^2.88.0",
+    "tesseract.js": "^1.0.14"
+  }
+}
