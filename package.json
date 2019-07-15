@@ -19,6 +19,6 @@
     "elasticsearch": "^15.2.0",
     "fs-extra": "^7.0.1",
     "request": "^2.88.0",
-    "tesseract.js": "^1.0.14"
+    "tesseract.js": "^1.0.19"
   }
 }
