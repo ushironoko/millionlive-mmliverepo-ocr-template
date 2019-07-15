@@ -291,8 +291,8 @@ level-js@^2.2.4:
     xtend "~2.1.2"
 
 lodash@^4.17.10:
-  version "4.17.11"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+  version "4.17.14"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.14.tgz#9ce487ae66c96254fe20b599f21b6816028078ba"
 
 ltgt@^2.1.2:
   version "2.2.1"
@@ -404,17 +404,17 @@ sshpk@^1.7.0:
 
 strip-ansi@^3.0.0:
   version "3.0.1"
-  resolved "http://registry.npmjs.org/strip-ansi/-/strip-ansi-3.0.1.tgz#6a385fb8853d952d5ff05d0e8aaf94278dc63dcf"
+  resolved "https://registry.npmjs.org/strip-ansi/-/strip-ansi-3.0.1.tgz#6a385fb8853d952d5ff05d0e8aaf94278dc63dcf"
   dependencies:
     ansi-regex "^2.0.0"
 
 supports-color@^2.0.0:
   version "2.0.0"
-  resolved "http://registry.npmjs.org/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
+  resolved "https://registry.npmjs.org/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
 
 tesseract.js-core@^1.0.2:
   version "1.0.2"
-  resolved "http://registry.npmjs.org/tesseract.js-core/-/tesseract.js-core-1.0.2.tgz#1ce33a29dc812357b8356a30ededf8b188043b37"
+  resolved "https://registry.npmjs.org/tesseract.js-core/-/tesseract.js-core-1.0.2.tgz#1ce33a29dc812357b8356a30ededf8b188043b37"
 
 tesseract.js@^1.0.14:
   version "1.0.14"
