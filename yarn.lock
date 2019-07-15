@@ -416,9 +416,9 @@ tesseract.js-core@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/tesseract.js-core/-/tesseract.js-core-1.0.2.tgz#1ce33a29dc812357b8356a30ededf8b188043b37"
 
-tesseract.js@^1.0.14:
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/tesseract.js/-/tesseract.js-1.0.14.tgz#2548eedb7468e2ddc9260e17d1a84fe4ec7ccba3"
+tesseract.js@^1.0.19:
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/tesseract.js/-/tesseract.js-1.0.19.tgz#f66a9accef1aa933ec7e574d1bb3205f7d2aef65"
   dependencies:
     file-type "^3.8.0"
     is-url "1.2.2"
